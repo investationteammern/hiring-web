@@ -30,7 +30,6 @@ const StackedSide = ({ children }) => {
                         }
                         headerEnd={
                             <>
-                                <LanguageSelector />
                                 <Notification />
                                 <SidePanel />
                                 <UserProfileDropdown hoverable={false} />
