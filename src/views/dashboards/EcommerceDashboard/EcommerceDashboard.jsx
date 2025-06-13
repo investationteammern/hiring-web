@@ -5,23 +5,14 @@ import RecentOrder from './components/RecentOrder'
 import SalesTarget from './components/SalesTarget'
 import TopProduct from './components/TopProduct'
 import RevenueByChannel from './components/RevenueByChannel'
-import { apiGetEcommerceDashboard } from '@/services/DashboardService'
 import useSWR from 'swr'
 
 const SalesDashboard = () => {
-    const { data, isLoading } = useSWR(
-        ['/api/dashboard/ecommerce'],
-        () => apiGetEcommerceDashboard(),
-        {
-            revalidateOnFocus: false,
-            revalidateIfStale: false,
-            revalidateOnReconnect: false,
-        },
-    )
+
 
     return (
-        <Loading loading={isLoading}>
-            {data && (
+        <Loading >
+            {/* {data && (
                 <div>
                     <div className="flex flex-col gap-4 max-w-full overflow-x-hidden">
                         <div className="flex flex-col xl:flex-row gap-4">
@@ -43,7 +34,7 @@ const SalesDashboard = () => {
                         <RecentOrder data={data.recentOrders} />
                     </div>
                 </div>
-            )}
+            )} */}
         </Loading>
     )
 }

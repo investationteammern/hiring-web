@@ -120,9 +120,8 @@ const Button = (props) => {
     }
 
     const getBtnColor = ({ bgColor, hoverColor, activeColor, textColor }) => {
-        return `${bgColor} ${
-            unclickable ? disabledClass : hoverColor + ' ' + activeColor
-        } ${textColor}`
+        return `${bgColor} ${unclickable ? disabledClass : hoverColor + ' ' + activeColor
+            } ${textColor}`
     }
 
     const btnColor = () => {

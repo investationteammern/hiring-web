@@ -9,7 +9,6 @@ import {
     GUIDE_PREFIX_PATH,
     UI_COMPONENTS_PREFIX_PATH,
 } from '@/constants/route.constant'
-import { apiGetSearchResult } from '@/services/CommonService'
 import debounce from 'lodash/debounce'
 import { HiOutlineSearch, HiChevronRight } from 'react-icons/hi'
 import { PiMagnifyingGlassDuotone } from 'react-icons/pi'
@@ -106,30 +105,11 @@ const _Search = ({ className }) => {
         handleReset()
     }
 
-    const debounceFn = debounce(handleDebounceFn, 200)
 
-    async function handleDebounceFn(query) {
-        if (!query) {
-            setSearchResult(recommendedSearch)
-            return
-        }
 
-        if (noResult) {
-            setNoResult(false)
-        }
-
-        const respond = await apiGetSearchResult({ query })
-
-        if (respond) {
-            if (respond.length === 0) {
-                setNoResult(true)
-            }
-            setSearchResult(respond)
-        }
-    }
 
     const handleSearch = (e) => {
-        debounceFn(e.target.value)
+        // 
     }
 
     useEffect(() => {

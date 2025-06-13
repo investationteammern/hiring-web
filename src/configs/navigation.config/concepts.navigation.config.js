@@ -11,7 +11,7 @@ const conceptsNavigationConfig = [
         key: 'concepts',
         path: '',
         title: 'Concepts',
-        translateKey: 'Job Category',
+        translateKey: 'nav.concepts',
         icon: 'concepts',
         type: NAV_ITEM_TYPE_TITLE,
         authority: [ADMIN, USER],

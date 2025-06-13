@@ -61,17 +61,14 @@ const validationSchema = z.object({
 const ProductTableFilter = () => {
     const [filterIsOpen, setFilterIsOpen] = useState(false)
 
-    const { filterData, setFilterData } = useProductList()
+    // const { filterData, setFilterData } = useProductList()
 
-    const { handleSubmit, control, getValues } = useForm({
-        defaultValues: filterData,
-        resolver: zodResolver(validationSchema),
-    })
 
-    const onSubmit = (values) => {
-        setFilterData(values)
-        setFilterIsOpen(false)
-    }
+
+    // const onSubmit = (values) => {
+    //     setFilterData(values)
+    //     setFilterIsOpen(false)
+    // }
 
     return (
         <>
@@ -87,14 +84,14 @@ const ProductTableFilter = () => {
                 <Form
                     className="h-full"
                     containerClassName="flex flex-col justify-between h-full"
-                    onSubmit={handleSubmit(onSubmit)}
+                // onSubmit={handleSubmit(onSubmit)}
                 >
                     <div>
                         <FormItem label="Product price">
                             <div className="flex items-center gap-2">
                                 <Controller
                                     name="minAmount"
-                                    control={control}
+                                    // control={control}
                                     render={({ field }) => (
                                         <NumericInput
                                             thousandSeparator
@@ -122,7 +119,7 @@ const ProductTableFilter = () => {
                                 </span>
                                 <Controller
                                     name="maxAmount"
-                                    control={control}
+                                    // control={control}
                                     render={({ field }) => (
                                         <NumericInput
                                             thousandSeparator
@@ -140,7 +137,7 @@ const ProductTableFilter = () => {
                         <FormItem label="Product status">
                             <Controller
                                 name="productStatus"
-                                control={control}
+                                // control={control}
                                 render={({ field }) => (
                                     <Select
                                         options={productStatusOption}
@@ -164,7 +161,7 @@ const ProductTableFilter = () => {
                             <div className="mt-4">
                                 <Controller
                                     name="productType"
-                                    control={control}
+                                    // control={control}
                                     render={({ field }) => (
                                         <Checkbox.Group
                                             vertical

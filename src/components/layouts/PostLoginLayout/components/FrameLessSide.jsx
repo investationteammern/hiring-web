@@ -4,6 +4,7 @@ import FrameLessGap from '@/components/template/FrameLessGap'
 import SideNavToggle from '@/components/template/SideNavToggle'
 import MobileNav from '@/components/template/MobileNav'
 import Search from '@/components/template/Search'
+import LanguageSelector from '@/components/template/LanguageSelector'
 import Notification from '@/components/template/Notification'
 import UserProfileDropdown from '@/components//template/UserProfileDropdown'
 import SidePanel from '@/components//template/SidePanel'
@@ -41,7 +42,7 @@ const FrameLessSide = ({ children }) => {
                         defaultClass,
                         'rounded-2xl',
                         pageBackgroundType === 'plain' &&
-                        'bg-white dark:bg-gray-900',
+                            'bg-white dark:bg-gray-900',
                     )}
                 >
                     <main className="h-full">
@@ -49,9 +50,9 @@ const FrameLessSide = ({ children }) => {
                             className={classNames(
                                 pageContainerDefaultClass,
                                 pageContainerType !== 'gutterless' &&
-                                pageContainerGutterClass,
+                                    pageContainerGutterClass,
                                 pageContainerType === 'contained' &&
-                                'container mx-auto',
+                                    'container mx-auto',
                                 !footer && 'pb-0 sm:pb-0 md:pb-0',
                             )}
                         >
@@ -98,6 +99,7 @@ const FrameLessSide = ({ children }) => {
                             }
                             headerEnd={
                                 <>
+                                    <LanguageSelector />
                                     <Notification />
                                     <SidePanel />
                                     <UserProfileDropdown hoverable={false} />

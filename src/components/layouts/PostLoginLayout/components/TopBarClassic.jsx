@@ -1,6 +1,7 @@
 import Header from '@/components/template/Header'
 import SidePanel from '@/components/template/SidePanel'
 import UserProfileDropdown from '@/components//template/UserProfileDropdown'
+import LanguageSelector from '@/components/template/LanguageSelector'
 import Notification from '@/components/template/Notification'
 import HeaderLogo from '@/components/template/HeaderLogo'
 import Search from '@/components/template/Search'
@@ -33,6 +34,7 @@ const TopBarClassic = ({ children }) => {
                         headerEnd={
                             <>
                                 <Search />
+                                <LanguageSelector />
                                 <Notification />
                                 <SidePanel />
                                 <UserProfileDropdown hoverable={false} />

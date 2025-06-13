@@ -14,7 +14,6 @@ const ProductListSearch = (props) => {
     const handleInputChange = (e) => {
         debounceFn(e.target.value)
     }
-
     return (
         <Input
             placeholder="Search"

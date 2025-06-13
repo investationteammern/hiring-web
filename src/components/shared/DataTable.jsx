@@ -134,8 +134,8 @@ function DataTable(props) {
                             checked={
                                 indeterminateCheckboxChecked
                                     ? indeterminateCheckboxChecked(
-                                          table.getRowModel().rows,
-                                      )
+                                        table.getRowModel().rows,
+                                    )
                                     : table.getIsAllRowsSelected()
                             }
                             indeterminate={table.getIsSomeRowsSelected()}
@@ -233,9 +233,9 @@ function DataTable(props) {
                                             <div
                                                 className={classNames(
                                                     header.column.getCanSort() &&
-                                                        'cursor-pointer select-none point',
+                                                    'cursor-pointer select-none point',
                                                     loading &&
-                                                        'pointer-events-none',
+                                                    'pointer-events-none',
                                                 )}
                                                 onClick={header.column.getToggleSortingHandler()}
                                             >

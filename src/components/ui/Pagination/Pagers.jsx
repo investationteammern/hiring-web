@@ -181,7 +181,7 @@ const Pagers = (props) => {
                         role="presentation"
                         onClick={(e) => onPagerClick(pager, e)}
                     >
-                        {pager}
+                        {pager}/10
                     </li>
                 )
             })}
@@ -200,7 +200,7 @@ const Pagers = (props) => {
                     role="presentation"
                     onClick={(e) => onPagerClick(pageCount, e)}
                 >
-                    {pageCount}
+                    {pageCount}/10
                 </li>
             )}
         </ul>

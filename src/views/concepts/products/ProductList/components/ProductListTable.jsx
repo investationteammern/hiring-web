@@ -4,7 +4,7 @@ import Progress from '@/components/ui/Progress'
 import Tooltip from '@/components/ui/Tooltip'
 import DataTable from '@/components/shared/DataTable'
 import ConfirmDialog from '@/components/shared/ConfirmDialog'
-import useProductList from '../hooks/useProductList'
+// import useProductList from '../hooks/useProductList'
 import classNames from '@/utils/classNames'
 import cloneDeep from 'lodash/cloneDeep'
 import { useNavigate } from 'react-router'
@@ -59,46 +59,19 @@ const ProductListTable = () => {
     const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false)
     const [toDeleteId, setToDeleteId] = useState('')
 
-    const handleCancel = () => {
-        setDeleteConfirmationOpen(false)
-    }
 
-    const handleDelete = (product) => {
-        setDeleteConfirmationOpen(true)
-        setToDeleteId(product.id)
-    }
 
-    const handleEdit = (product) => {
-        navigate(`/concepts/products/product-edit/${product.id}`)
-    }
-
-    const handleConfirmDelete = () => {
-        const newProductList = productList.filter((product) => {
-            return !(toDeleteId === product.id)
-        })
-        setSelectAllProduct([])
-        mutate(
-            {
-                list: newProductList,
-                total: productListTotal - selectedProduct.length,
-            },
-            false,
-        )
-        setDeleteConfirmationOpen(false)
-        setToDeleteId('')
-    }
-
-    const {
-        productList,
-        productListTotal,
-        tableData,
-        isLoading,
-        setTableData,
-        setSelectAllProduct,
-        setSelectedProduct,
-        selectedProduct,
-        mutate,
-    } = useProductList()
+    // const {
+    //     productList,
+    //     productListTotal,
+    //     tableData,
+    //     isLoading,
+    //     setTableData,
+    //     setSelectAllProduct,
+    //     setSelectedProduct,
+    //     selectedProduct,
+    //     mutate,
+    // } = useProductList()
 
     const columns = useMemo(
         () => [
@@ -229,15 +202,15 @@ const ProductListTable = () => {
             <DataTable
                 selectable
                 columns={columns}
-                data={productList}
-                noData={!isLoading && productList.length === 0}
+                // data={productList}
+                // noData={!isLoading && productList.length === 0}
                 skeletonAvatarColumns={[0]}
                 skeletonAvatarProps={{ width: 28, height: 28 }}
-                loading={isLoading}
+                // loading={ }
                 pagingData={{
-                    total: productListTotal,
-                    pageIndex: tableData.pageIndex,
-                    pageSize: tableData.pageSize,
+                    // total: productListTotal,
+                    // pageIndex: tableData.pageIndex,
+                    // pageSize: tableData.pageSize,
                 }}
                 checkboxChecked={(row) =>
                     selectedProduct.some((selected) => selected.id === row.id)
@@ -252,10 +225,10 @@ const ProductListTable = () => {
                 isOpen={deleteConfirmationOpen}
                 type="danger"
                 title="Remove products"
-                onClose={handleCancel}
-                onRequestClose={handleCancel}
-                onCancel={handleCancel}
-                onConfirm={handleConfirmDelete}
+            // onClose={handleCancel}
+            // onRequestClose={handleCancel}
+            // onCancel={handleCancel}
+            // onConfirm={handleConfirmDelete}
             >
                 <p>
                     {' '}
