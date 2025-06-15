@@ -4,7 +4,6 @@ import Button from '@/components/ui/Button'
 import { FormItem, Form } from '@/components/ui/Form'
 import PasswordInput from '@/components/shared/PasswordInput'
 import classNames from '@/utils/classNames'
-import { useAuth } from '@/auth'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -35,22 +34,21 @@ const SignInForm = (props) => {
         resolver: zodResolver(validationSchema),
     })
 
-    const { signIn } = useAuth()
 
     const onSignIn = async (values) => {
-        const { email, password } = values
+        // const { email, password } = values
 
-        if (!disableSubmit) {
-            setSubmitting(true)
+        // if (!disableSubmit) {
+        //     setSubmitting(true)
 
-            const result = await signIn({ email, password })
+        //     const result = await signIn({ email, password })
 
-            if (result?.status === 'failed') {
-                setMessage?.(result.message)
-            }
-        }
+        //     if (result?.status === 'failed') {
+        //         setMessage?.(result.message)
+        //     }
+        // }
 
-        setSubmitting(false)
+        // setSubmitting(false)
     }
 
     return (

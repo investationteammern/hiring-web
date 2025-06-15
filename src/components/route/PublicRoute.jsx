@@ -5,7 +5,7 @@ const { authenticatedEntryPath } = appConfig
 
 const PublicRoute = () => {
 
-    return authenticated ? <Navigate to={authenticatedEntryPath} /> : <Outlet />
+    return <Outlet />
 }
 
 export default PublicRoute
