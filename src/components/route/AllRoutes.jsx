@@ -23,18 +23,14 @@ const AllRoutes = (props) => {
                         key={route.key + index}
                         path={route.path}
                         element={
-                            <AuthorityGuard
-                            // userAuthority={user.authority}
-                            // authority={route.authority}
-                            >
-                                <PageContainer {...props} {...route.meta}>
-                                    <AppRoute
-                                        routeKey={route.key}
-                                        component={route.component}
-                                        {...route.meta}
-                                    />
-                                </PageContainer>
-                            </AuthorityGuard>
+
+                            <PageContainer {...props} {...route.meta}>
+                                <AppRoute
+                                    routeKey={route.key}
+                                    component={route.component}
+                                    {...route.meta}
+                                />
+                            </PageContainer>
                         }
                     />
                 ))}
