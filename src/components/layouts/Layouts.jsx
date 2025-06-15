@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 import Loading from '@/components/shared/Loading'
-import { useAuth } from '@/auth'
 import { useThemeStore } from '@/store/themeStore'
 import PostLoginLayout from './PostLoginLayout'
 import PreLoginLayout from './PreLoginLayout'
@@ -8,7 +7,6 @@ import PreLoginLayout from './PreLoginLayout'
 const Layout = ({ children }) => {
     const layoutType = useThemeStore((state) => state.layout.type)
 
-    const { authenticated } = useAuth()
 
     return (
         <Suspense
@@ -18,13 +16,13 @@ const Layout = ({ children }) => {
                 </div>
             }
         >
-            {authenticated ? (
-                <PostLoginLayout layoutType={layoutType}>
-                    {children}
-                </PostLoginLayout>
-            ) : (
-                <PreLoginLayout>{children}</PreLoginLayout>
-            )}
+            {/* {authenticated ? ( */}
+            <PostLoginLayout layoutType={layoutType}>
+                {children}
+            </PostLoginLayout>
+            {/* // ) : (
+            //     <PreLoginLayout>{children}</PreLoginLayout>
+            // )} */}
         </Suspense>
     )
 }

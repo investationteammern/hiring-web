@@ -9,7 +9,6 @@ import {
     PiPulseDuotone,
     PiSignOutDuotone,
 } from 'react-icons/pi'
-import { useAuth } from '@/auth'
 
 const dropdownItemList = [
     {
@@ -32,10 +31,9 @@ const dropdownItemList = [
 const _UserDropdown = () => {
     const { avatar, userName, email } = useSessionUser((state) => state.user)
 
-    const { signOut } = useAuth()
 
     const handleSignOut = () => {
-        signOut()
+        // 
     }
 
     const avatarProps = {
