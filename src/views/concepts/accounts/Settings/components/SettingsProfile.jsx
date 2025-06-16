@@ -8,7 +8,6 @@ import { Form, FormItem } from '@/components/ui/Form'
 import NumericInput from '@/components/shared/NumericInput'
 import { countryList } from '@/constants/countries.constant'
 import { components } from 'react-select'
-import { apiGetSettingsProfile } from '@/services/AccontsService'
 import sleep from '@/utils/sleep'
 import useSWR from 'swr'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -74,15 +73,7 @@ const CustomControl = ({ children, ...props }) => {
 }
 
 const SettingsProfile = () => {
-    const { data, mutate } = useSWR(
-        '/api/settings/profile/',
-        () => apiGetSettingsProfile(),
-        {
-            revalidateOnFocus: false,
-            revalidateIfStale: false,
-            revalidateOnReconnect: false,
-        },
-    )
+
 
     const dialCodeList = useMemo(() => {
         const newCountryList = JSON.parse(JSON.stringify(countryList))
@@ -118,17 +109,12 @@ const SettingsProfile = () => {
     })
 
     useEffect(() => {
-        if (data) {
-            reset(data)
-        }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data])
+    }, [])
 
     const onSubmit = async (values) => {
-        await sleep(500)
-        if (data) {
-            mutate({ ...data, ...values }, false)
-        }
+
     }
 
     return (

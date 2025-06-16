@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Button from '@/components/ui/Button'
 import { FormItem, Form } from '@/components/ui/Form'
 import PasswordInput from '@/components/shared/PasswordInput'
-import { apiResetPassword } from '@/services/AuthService'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -34,26 +33,7 @@ const ResetPasswordForm = (props) => {
     })
 
     const onResetPassword = async (values) => {
-        const { newPassword } = values
-
-        try {
-            const resp = await apiResetPassword({
-                password: newPassword,
-            })
-            if (resp) {
-                setSubmitting(false)
-                setResetComplete?.(true)
-            }
-        } catch (errors) {
-            setMessage?.(
-                typeof errors === 'string'
-                    ? errors
-                    : 'Failed to reset password',
-            )
-            setSubmitting(false)
-        }
-
-        setSubmitting(false)
+        // 
     }
 
     return (

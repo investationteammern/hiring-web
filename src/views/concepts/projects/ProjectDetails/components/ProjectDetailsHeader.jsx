@@ -8,7 +8,6 @@ import { Form, FormItem } from '@/components/ui/Form'
 import ToggleDrawer from '@/components/shared/ToggleDrawer'
 import ProjectDetailsNavigation from './ProjectDetailsNavigation'
 import useResponsive from '@/utils/hooks/useResponsive'
-import { apiGetProjectMembers } from '@/services/ProjectService'
 import { components } from 'react-select'
 import { TbChecks } from 'react-icons/tb'
 import useSWRMutation from 'swr/mutation'
@@ -18,11 +17,10 @@ const { MultiValueLabel } = components
 const CustomSelectOption = ({ innerProps, label, data, isSelected }) => {
     return (
         <div
-            className={`flex items-center justify-between p-2 ${
-                isSelected
-                    ? 'bg-gray-100 dark:bg-gray-500'
-                    : 'hover:bg-gray-50 dark:hover:bg-gray-600'
-            }`}
+            className={`flex items-center justify-between p-2 ${isSelected
+                ? 'bg-gray-100 dark:bg-gray-500'
+                : 'hover:bg-gray-50 dark:hover:bg-gray-600'
+                }`}
             {...innerProps}
         >
             <div className="flex items-center gap-2">

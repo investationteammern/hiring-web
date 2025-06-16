@@ -7,7 +7,6 @@ import Loading from '@/components/shared/Loading'
 import ConfirmDialog from '@/components/shared/ConfirmDialog'
 import OrderForm from '../OrderForm'
 import sleep from '@/utils/sleep'
-import { apiGetOrder } from '@/services/OrderService'
 import useSWR from 'swr'
 import { useParams, useNavigate } from 'react-router'
 import { TbTrash } from 'react-icons/tb'
@@ -17,15 +16,6 @@ const OrderEdit = () => {
 
     const navigate = useNavigate()
 
-    const { data, isLoading } = useSWR(
-        [`/api/project/${id}`],
-        () => apiGetOrder({ id }),
-        {
-            revalidateOnFocus: false,
-            revalidateIfStale: false,
-            revalidateOnReconnect: false,
-        },
-    )
 
     const [discardConfirmationOpen, setDiscardConfirmationOpen] =
         useState(false)
@@ -38,7 +28,7 @@ const OrderEdit = () => {
         setIsSubmiting(false)
         toast.push(
             <Notification type="success">
-                Order: #{data?.id} updated!
+
             </Notification>,
             { placement: 'top-center' },
         )
@@ -64,18 +54,18 @@ const OrderEdit = () => {
     const orderFormProps = useMemo(() => {
         const products = data
             ? data.product.map(
-                  ({ id, name, productCode, img, price, quantity }) => {
-                      return {
-                          id,
-                          name,
-                          productCode,
-                          img,
-                          price,
-                          quantity,
-                          stock: 0,
-                      }
-                  },
-              )
+                ({ id, name, productCode, img, price, quantity }) => {
+                    return {
+                        id,
+                        name,
+                        productCode,
+                        img,
+                        price,
+                        quantity,
+                        stock: 0,
+                    }
+                },
+            )
             : []
 
         const defaultValues = {

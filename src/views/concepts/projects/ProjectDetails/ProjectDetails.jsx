@@ -3,7 +3,6 @@ import Spinner from '@/components/ui/Spinner'
 import ProjectDetailsHeader from './components/ProjectDetailsHeader'
 import ProjectDetailsNavigation from './components/ProjectDetailsNavigation'
 import useResponsive from '@/utils/hooks/useResponsive'
-import { apiGetProject } from '@/services/ProjectService'
 import useSWR from 'swr'
 import { useParams } from 'react-router'
 
@@ -27,15 +26,7 @@ const ProjectDetailsSetting = lazy(
 const ProjectDetails = () => {
     const { id } = useParams()
 
-    const { data, mutate } = useSWR(
-        [`/api/project/${id}`],
-        () => apiGetProject({ id }),
-        {
-            revalidateOnFocus: false,
-            revalidateIfStale: false,
-            revalidateOnReconnect: false,
-        },
-    )
+
 
     const { larger } = useResponsive()
 

@@ -123,7 +123,7 @@ const ChatList = () => {
                                 className={classNames(
                                     'py-3 px-2 flex items-center gap-2 justify-between rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 relative cursor-pointer select-none',
                                     selectedChat.id === item.id &&
-                                        'bg-gray-100 dark:bg-gray-700',
+                                    'bg-gray-100 dark:bg-gray-700',
                                 )}
                                 role="button"
                                 onClick={() =>

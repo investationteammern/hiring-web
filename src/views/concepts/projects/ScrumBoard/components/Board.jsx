@@ -8,10 +8,6 @@ import ScrumBoardHeader from './ScrumBoardHeader'
 import { useScrumBoardStore } from '../store/scrumBoardStore'
 import sleep from '@/utils/sleep'
 import reoderArray from '@/utils/reoderArray'
-import {
-    apiGetScrumBoards,
-    apiGetProjectMembers,
-} from '@/services/ProjectService'
 import { Droppable, DragDropContext } from '@hello-pangea/dnd'
 import useSWR from 'swr'
 
@@ -42,29 +38,9 @@ const Board = (props) => {
         withScrollableColumns,
     } = props
 
-    useSWR(['/api/projects/scrum-board'], () => apiGetScrumBoards(), {
-        revalidateOnFocus: false,
-        revalidateIfStale: false,
-        revalidateOnReconnect: false,
-        onSuccess: (data) => {
-            updateOrdered(Object.keys(data))
-            updateColumns(data)
-        },
-    })
 
-    useSWR(
-        ['/api/projects/scrum-board/members'],
-        () => apiGetProjectMembers(),
-        {
-            revalidateOnFocus: false,
-            revalidateIfStale: false,
-            revalidateOnReconnect: false,
-            onSuccess: (data) => {
-                updateBoardMembers(data.participantMembers)
-                updateAllMembers(data.allMembers)
-            },
-        },
-    )
+
+
 
     const onDialogClose = async () => {
         closeDialog()

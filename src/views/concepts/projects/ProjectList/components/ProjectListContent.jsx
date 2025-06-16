@@ -3,7 +3,6 @@ import UsersAvatarGroup from '@/components/shared/UsersAvatarGroup'
 import { Link } from 'react-router'
 import ProgressionBar from './ProgressionBar'
 import { useProjectListStore } from '../store/projectListStore'
-import { apiGetProjects } from '@/services/ProjectService'
 import useSWR from 'swr'
 import { TbClipboardCheck, TbStarFilled, TbStar } from 'react-icons/tb'
 
@@ -11,14 +10,6 @@ const ProjectListContent = () => {
     const { projectList, updateProjectFavorite, setProjectList } =
         useProjectListStore()
 
-    useSWR(['/api/projects'], () => apiGetProjects(), {
-        revalidateOnFocus: false,
-        revalidateIfStale: false,
-        revalidateOnReconnect: false,
-        onSuccess: (data) => {
-            setProjectList(data)
-        },
-    })
 
     const handleToggleFavorite = (id, value) => {
         updateProjectFavorite({ id, value })

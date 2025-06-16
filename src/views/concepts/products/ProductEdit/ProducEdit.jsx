@@ -6,7 +6,6 @@ import toast from '@/components/ui/toast'
 import ConfirmDialog from '@/components/shared/ConfirmDialog'
 import ProductForm from '../ProductForm'
 import NoProductFound from '@/assets/svg/NoProductFound'
-import { apiGetProduct } from '@/services/ProductService'
 import sleep from '@/utils/sleep'
 import { TbTrash, TbArrowNarrowLeft } from 'react-icons/tb'
 import { useParams, useNavigate } from 'react-router'
@@ -17,15 +16,7 @@ const ProducEdit = () => {
 
     const navigate = useNavigate()
 
-    const { data, isLoading } = useSWR(
-        [`/api/product/${id}`, { id: id }],
-        // eslint-disable-next-line no-unused-vars
-        ([_, params]) => apiGetProduct(params),
-        {
-            revalidateOnFocus: false,
-            revalidateIfStale: false,
-        },
-    )
+
 
     const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false)
 

@@ -5,7 +5,6 @@ import ChatBox from '@/components/view/ChatBox'
 import ChatAction from './ChatAction'
 import StartConverstation from '@/assets/svg/StartConverstation'
 import { useChatStore } from '../store/chatStore'
-import { apiGetConversation } from '@/services/ChatService'
 import classNames from '@/utils/classNames'
 import useResponsive from '@/utils/hooks/useResponsive'
 import dayjs from 'dayjs'
@@ -138,33 +137,9 @@ const ChatBody = () => {
     }
 
     useEffect(() => {
-        const fetchConvesation = async () => {
-            setIsFetchingConversation(true)
 
-            const record = conversationRecord.find(
-                (item) => item.id === selectedChat.id,
-            )
-
-            if (record) {
-                setConversation(record.conversation)
-            } else {
-                const resp = await apiGetConversation({
-                    id: selectedChat.id,
-                })
-                setConversation(resp.conversation)
-                pushConversationRecord(resp)
-            }
-
-            setIsFetchingConversation(false)
-            scrollToBottom()
-        }
-
-        if (selectedChat.id) {
-            setConversation([])
-            fetchConvesation()
-        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedChat.id, conversation])
+    }, [])
 
     const messageList = useMemo(() => {
         return conversation.map((item) => {

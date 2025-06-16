@@ -4,7 +4,6 @@ import Affix from '@/components/shared/Affix'
 import Card from '@/components/ui/Card'
 import Container from '@/components/shared/Container'
 import BottomStickyBar from '@/components/template/BottomStickyBar'
-import { apiGetProductList } from '@/services/ProductService'
 import ProductSelectSection from './components/ProductSelectSection'
 import CustomerDetailSection from './components/CustomerDetailSection'
 import BillingAddressSection from './components/BillingAddressSection'
@@ -106,37 +105,6 @@ const OrderForm = (props) => {
 
     const { larger } = useResponsive()
 
-    useSWR(
-        [
-            '/api/products',
-            {
-                pageIndex: 1,
-                pageSize: 10,
-                query: '',
-
-                sort: {
-                    order: '',
-                    key: '',
-                },
-            },
-        ], // eslint-disable-next-line no-unused-vars
-        ([_, params]) => apiGetProductList(params),
-        {
-            revalidateOnFocus: false,
-            onSuccess: (resp) => {
-                const list = resp.list.map(
-                    ({ id: value, name: label, img, stock: quantity }) => ({
-                        label,
-                        value,
-                        img,
-                        quantity,
-                    }),
-                )
-                setProductList(resp.list)
-                setProductOption(list)
-            },
-        },
-    )
 
     useEffect(() => {
         if (defaultProducts) {

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import AdaptiveCard from '@/components/shared/AdaptiveCard'
 import Log from './components/Log'
 import LogAction from './components/LogAction'
-import { apiGetLogs } from '@/services/LogService'
 import {
     UPDATE_TICKET,
     COMMENT,
@@ -31,16 +30,9 @@ const ActivityLog = () => {
     const [showMentionedOnly, setShowMentionedOnly] = useState(false)
     const [selectedType, setSelectedType] = useState(defaultSelectedType)
 
-    const getLogs = async (index) => {
-        setIsLoading(true)
-        const resp = await apiGetLogs({ activityIndex: index })
-        setActivities((prevActivities) => [...prevActivities, ...resp.data])
-        seLoadable(resp.loadable)
-        setIsLoading(false)
-    }
+
 
     useEffect(() => {
-        getLogs(activityIndex)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

@@ -7,7 +7,6 @@ import Traffic from './components/Traffic'
 import TopChannel from './components/TopChannel'
 import DeviceSession from './components/DeviceSession'
 import TopPerformingPages from './components/TopPerformingPages'
-import { apiGetAnalyticDashboard } from '@/services/DashboardService'
 import useSWR from 'swr'
 
 const AnalyticDashboard = () => {

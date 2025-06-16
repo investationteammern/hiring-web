@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
 import { FormItem, Form } from '@/components/ui/Form'
-import { apiForgotPassword } from '@/services/AuthService'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -25,22 +24,7 @@ const ForgotPasswordForm = (props) => {
     })
 
     const onForgotPassword = async (values) => {
-        const { email } = values
-
-        try {
-            const resp = await apiForgotPassword({ email })
-            if (resp) {
-                setSubmitting(false)
-                setEmailSent?.(true)
-            }
-        } catch (errors) {
-            setMessage?.(
-                typeof errors === 'string' ? errors : 'Some error occured!',
-            )
-            setSubmitting(false)
-        }
-
-        setSubmitting(false)
+        // 
     }
 
     return (

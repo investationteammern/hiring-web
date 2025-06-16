@@ -5,30 +5,20 @@ import TextBlockSkeleton from '@/components/shared/loaders/TextBlockSkeleton'
 import ArticleBody from './components/ArticleBody'
 import ArticleAction from './components/ArticleAction'
 import ArticleTableOfContent from './components/ArticleTableOfContent'
-import { apiGetSupportHubArticle } from '@/services/HelpCenterService'
 import { useParams } from 'react-router'
 import useSWR from 'swr'
 
 const Article = () => {
     const { id } = useParams()
 
-    const { data, isLoading } = useSWR(
-        [`/api/helps/articles/${id}`, { id: id }],
-        // eslint-disable-next-line no-unused-vars
-        ([_, params]) => apiGetSupportHubArticle(params),
-        {
-            revalidateOnFocus: false,
-            revalidateIfStale: false,
-            evalidateOnFocus: false,
-        },
-    )
+
 
     return (
         <Container>
             <div className="lg:flex gap-4">
                 <div className="my-6 max-w-[800px] w-full mx-auto">
                     <Loading
-                        loading={isLoading}
+                        loading=''
                         customLoader={
                             <div className="flex flex-col gap-8">
                                 <MediaSkeleton />

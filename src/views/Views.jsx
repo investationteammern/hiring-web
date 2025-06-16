@@ -8,7 +8,7 @@ const Views = (props) => {
     const location = useLocation()
 
     return (
-        <Suspense 
+        <Suspense
             key={location.key}
             fallback={<Loading loading={true} className="w-full" />}
         >

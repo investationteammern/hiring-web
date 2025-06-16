@@ -54,11 +54,10 @@ const colorOptions = [
 const CustomSelectOption = ({ innerProps, label, data, isSelected }) => {
     return (
         <div
-            className={`flex items-center justify-between rounded-lg p-2 ${
-                isSelected
+            className={`flex items-center justify-between rounded-lg p-2 ${isSelected
                     ? 'bg-gray-100 dark:bg-gray-500'
                     : 'hover:bg-gray-50 dark:hover:bg-gray-600'
-            }`}
+                }`}
             {...innerProps}
         >
             <div className="flex items-center">

@@ -5,7 +5,6 @@ import CurrentTasks from './components/CurrentTasks'
 import Schedule from './components/Schedule'
 import ProjectOverview from './components/ProjectOverview'
 import RecentActivity from './components/RecentActivity'
-import { apiGetProjectDashboard } from '@/services/DashboardService'
 import useSWR from 'swr'
 
 const ProjectDashboard = () => {

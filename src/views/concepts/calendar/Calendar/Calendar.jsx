@@ -2,7 +2,6 @@ import { useState } from 'react'
 import CalendarView from '@/components/shared/CalendarView'
 import Container from '@/components/shared/Container'
 import EventDialog from './components/EventDialog'
-import { apiGetCalendar } from '@/services/CalendarService'
 import cloneDeep from 'lodash/cloneDeep'
 import dayjs from 'dayjs'
 import useSWR from 'swr'
@@ -14,15 +13,7 @@ const Calendar = () => {
         type: '',
     })
 
-    const { data: events, mutate } = useSWR(
-        '/api/calendar',
-        () => apiGetCalendar(),
-        {
-            revalidateOnFocus: false,
-            revalidateIfStale: false,
-            revalidateOnReconnect: false,
-        },
-    )
+
 
     const handleCellSelect = (event) => {
         const { start, end } = event

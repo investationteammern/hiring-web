@@ -1,5 +1,4 @@
 import useSWR from 'swr'
-import { apiGetFiles } from '@/services/FileService'
 import Table from '@/components/ui/Table'
 import Avatar from '@/components/ui/Avatar'
 import Loading from '@/components/shared/Loading'
@@ -27,28 +26,14 @@ const FileSegment = ({ fileType, size, name }) => {
 }
 
 const ProjectDetailsAttachments = () => {
-    const { data, isLoading } = useSWR(['/api/fles'], () => apiGetFiles({}), {
-        revalidateOnFocus: false,
-        revalidateIfStale: false,
-        revalidateOnReconnect: false,
-    })
+
 
     return (
-        <Loading loading={isLoading}>
+        <Loading>
             <div>
                 <h4>Recently added</h4>
                 <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mt-4 gap-4 lg:gap-6">
-                    {data &&
-                        data.list
-                            .filter((file) => file.recent)
-                            .map((file) => (
-                                <FileSegment
-                                    key={file.id}
-                                    fileType={file.fileType}
-                                    size={file.size}
-                                    name={file.name}
-                                />
-                            ))}
+
                 </div>
             </div>
             <div className="mt-10">
@@ -64,56 +49,7 @@ const ProjectDetailsAttachments = () => {
                         </Tr>
                     </THead>
                     <TBody>
-                        {data &&
-                            data.list
-                                .filter((file) => !file.recent)
-                                .map((file) => (
-                                    <Tr
-                                        key={file.id}
-                                        className="cursor-pointer"
-                                    >
-                                        <Td>
-                                            <div className="flex items-center gap-2">
-                                                <div className="text-2xl">
-                                                    <FileIcon
-                                                        type={file.fileType}
-                                                        size={35}
-                                                    />
-                                                </div>
-                                                <div className="font-bold heading-text">
-                                                    {file.name}
-                                                </div>
-                                            </div>
-                                        </Td>
-                                        <Td className="font-semibold text-nowrap">
-                                            {fileSizeUnit(file.size)}
-                                        </Td>
-                                        <Td className="font-semibold text-nowrap">
-                                            {dayjs
-                                                .unix(file.uploadDate)
-                                                .format('DD MMM YYYY')}
-                                        </Td>
-                                        <Td className="font-semibold">
-                                            {dayjs
-                                                .unix(
-                                                    file.activities[0]
-                                                        .timestamp,
-                                                )
-                                                .format('DD MMM YYYY')}
-                                        </Td>
-                                        <Td>
-                                            <div className="flex items-center gap-2">
-                                                <Avatar
-                                                    size={28}
-                                                    src={file.author.img}
-                                                />
-                                                <span className="heading-text font-bold">
-                                                    {file.author.name}
-                                                </span>
-                                            </div>
-                                        </Td>
-                                    </Tr>
-                                ))}
+
                     </TBody>
                 </Table>
             </div>

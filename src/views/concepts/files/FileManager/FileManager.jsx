@@ -9,17 +9,10 @@ import FileManagerDeleteDialog from './components/FileManagerDeleteDialog'
 import FileManagerInviteDialog from './components/FileManagerInviteDialog'
 import FileManagerRenameDialog from './components/FileManagerRenameDialog'
 import { useFileManagerStore } from './store/useFileManagerStore'
-import { apiGetFiles } from '@/services/FileService'
 import useSWRMutation from 'swr/mutation'
 
 const { THead, Th, Tr } = Table
 
-async function getFile(_, { arg }) {
-    const data = await apiGetFiles({
-        id: arg,
-    })
-    return data
-}
 
 const FileManager = () => {
     const {
@@ -35,21 +28,10 @@ const FileManager = () => {
         setSelectedFile,
     } = useFileManagerStore()
 
-    const { trigger, isMutating } = useSWRMutation(
-        `/api/files/${openedDirectoryId}`,
-        getFile,
-        {
-            onSuccess: (resp) => {
-                setDirectories(resp.directory)
-                setFileList(resp.list)
-            },
-        },
-    )
+
 
     useEffect(() => {
-        if (fileList.length === 0) {
-            trigger(openedDirectoryId)
-        }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

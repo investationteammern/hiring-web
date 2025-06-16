@@ -3,7 +3,6 @@ import Button from '@/components/ui/Button'
 import Dialog from '@/components/ui/Dialog'
 import NewProjectForm from './NewProjectForm'
 import { useProjectListStore } from '../store/projectListStore'
-import { apiGetProjectMembers } from '@/services/ProjectService'
 import useSWR from 'swr'
 
 const ProjectListHeader = () => {
@@ -11,19 +10,7 @@ const ProjectListHeader = () => {
 
     const { setMembers } = useProjectListStore()
 
-    useSWR(['/api/projects/members'], () => apiGetProjectMembers(), {
-        revalidateOnFocus: false,
-        revalidateIfStale: false,
-        revalidateOnReconnect: false,
-        onSuccess: (data) => {
-            const members = data?.allMembers.map((item) => ({
-                value: item.id,
-                label: item.name,
-                img: item.img,
-            }))
-            setMembers(members)
-        },
-    })
+
 
     return (
         <>

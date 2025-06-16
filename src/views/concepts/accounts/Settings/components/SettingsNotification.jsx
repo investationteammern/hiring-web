@@ -1,7 +1,6 @@
 import Checkbox from '@/components/ui/Checkbox'
 import Radio from '@/components/ui/Radio'
 import Switcher from '@/components/ui/Switcher'
-import { apiGetSettingsNotification } from '@/services/AccontsService'
 import useSWR from 'swr'
 import cloneDeep from 'lodash/cloneDeep'
 import { TbMessageCircleCheck } from 'react-icons/tb'
@@ -48,62 +47,26 @@ const notifyMeOption = [
 ]
 
 const SettingsNotification = () => {
-    const {
-        data = {
-            email: [],
-            desktop: false,
-            unreadMessageBadge: false,
-            notifymeAbout: '',
-        },
-        mutate,
-    } = useSWR(
-        '/api/settings/notification/',
-        () => apiGetSettingsNotification(),
-        {
-            revalidateOnFocus: false,
-            revalidateIfStale: false,
-            revalidateOnReconnect: false,
-        },
-    )
+
 
     const handleEmailNotificationOptionChange = (values) => {
-        const newData = cloneDeep(data)
-        newData.email = values
-        mutate(newData, false)
+
     }
 
     const handleEmailNotificationOptionCheckAll = (value) => {
-        const newData = cloneDeep(data)
-        if (value) {
-            newData.email = [
-                'newsAndUpdate',
-                'tipsAndTutorial',
-                'offerAndPromotion',
-                'followUpReminder',
-            ]
-        } else {
-            newData.email = []
-        }
-
-        mutate(newData, false)
+        // 
     }
 
     const handleDesktopNotificationCheck = (value) => {
-        const newData = cloneDeep(data)
-        newData.desktop = value
-        mutate(newData, false)
+
     }
 
     const handleUnreadMessagebadgeCheck = (value) => {
-        const newData = cloneDeep(data)
-        newData.unreadMessageBadge = value
-        mutate(newData, false)
+
     }
 
     const handleNotifyMeChange = (value) => {
-        const newData = cloneDeep(data)
-        newData.notifymeAbout = value
-        mutate(newData, false)
+
     }
 
     return (
@@ -146,7 +109,7 @@ const SettingsNotification = () => {
                         <Radio.Group
                             vertical
                             className="flex flex-col gap-6"
-                            value={data.notifymeAbout}
+                            value=''
                             onChange={handleNotifyMeChange}
                         >
                             {notifyMeOption.map((option) => (
@@ -178,7 +141,7 @@ const SettingsNotification = () => {
                     </div>
                     <div>
                         <Switcher
-                            checked={data.email.length > 0}
+                            checked=''
                             onChange={handleEmailNotificationOptionCheckAll}
                         />
                     </div>
@@ -186,7 +149,7 @@ const SettingsNotification = () => {
                 <Checkbox.Group
                     vertical
                     className="flex flex-col gap-6"
-                    value={data.email}
+                    value=''
                     onChange={handleEmailNotificationOptionChange}
                 >
                     {emailNotificationOption.map((option) => (

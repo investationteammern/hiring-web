@@ -14,7 +14,6 @@ import {
     lightingOptions,
     cameraOptions,
 } from '../utils'
-import { apiPostImages } from '@/services/AiService'
 import { LuImage } from 'react-icons/lu'
 
 const GeneratorPrompt = () => {
@@ -37,25 +36,7 @@ const GeneratorPrompt = () => {
     }
 
     const handleGenerate = async () => {
-        const prompt = promptRef.current?.value
 
-        if (!prompt) {
-            toast.push(
-                <Notification title={'Please enter prompt'} type="danger" />,
-                {
-                    placement: 'top-center',
-                },
-            )
-            promptRef.current?.focus()
-
-            return
-        }
-        onGenerateImage()
-        const resp = await apiPostImages({ prompt })
-        if (resp) {
-            setGeneratedImage(resp)
-        }
-        onGenerateImageComplete()
     }
 
     const handleSetGeneratorConfig = (key, value) => {

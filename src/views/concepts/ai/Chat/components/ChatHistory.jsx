@@ -2,7 +2,6 @@ import { Fragment } from 'react'
 import ScrollBar from '@/components/ui/ScrollBar'
 import ChatHistoryItem from './ChatHistoryItem'
 import { usGenerativeChatStore } from '../store/generativeChatStore'
-import { apiGetChatHistory } from '@/services/AiService'
 
 import useSWR from 'swr'
 
@@ -15,14 +14,7 @@ const ChatHistory = ({ queryText = '', onClick }) => {
         selectedConversation,
     } = usGenerativeChatStore()
 
-    useSWR(['/api/ai/chat/history'], () => apiGetChatHistory(), {
-        revalidateOnFocus: false,
-        revalidateIfStale: false,
-        revalidateOnReconnect: false,
-        onSuccess: (data) => {
-            setChatHistory(data)
-        },
-    })
+
 
     const handleDelete = (id) => {
         setChatHistory(chatHistory.filter((item) => item.id !== id))

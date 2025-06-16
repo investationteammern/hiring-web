@@ -5,13 +5,11 @@ import Dialog from '@/components/ui/Dialog'
 import ScrollBar from '@/components/ui/ScrollBar'
 import DebouceInput from '@/components/shared/DebouceInput'
 import classNames from '@/utils/classNames'
-import { apiGetContacts } from '@/services/ChatService'
 import { TbSearch, TbCheck } from 'react-icons/tb'
 import useSWRMutation from 'swr/mutation'
 
 async function getContacts() {
-    const data = await apiGetContacts()
-    return data
+    // 
 }
 
 const NewChat = () => {
@@ -125,7 +123,7 @@ const NewChat = () => {
                                                             item.id ===
                                                             contact.id,
                                                     ) &&
-                                                        'bg-gray-100 dark:bg-gray-700',
+                                                    'bg-gray-100 dark:bg-gray-700',
                                                 )}
                                                 role="button"
                                                 onClick={() =>
@@ -150,8 +148,8 @@ const NewChat = () => {
                                                     (item) =>
                                                         item.id === contact.id,
                                                 ) && (
-                                                    <TbCheck className="text-2xl text-primary" />
-                                                )}
+                                                        <TbCheck className="text-2xl text-primary" />
+                                                    )}
                                             </div>
                                         ))}
                                     </div>
