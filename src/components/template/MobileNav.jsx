@@ -5,7 +5,6 @@ import NavToggle from '@/components/shared/NavToggle'
 import { DIR_RTL } from '@/constants/theme.constant'
 import withHeaderItem from '@/utils/hoc/withHeaderItem'
 import navigationConfig from '@/configs/navigation.config'
-import appConfig from '@/configs/app.config'
 import { useThemeStore } from '@/store/themeStore'
 import { useRouteKeyStore } from '@/store/routeKeyStore'
 import { useSessionUser } from '@/store/authStore'
@@ -16,7 +15,7 @@ const VerticalMenuContent = lazy(
 
 const MobileNavToggle = withHeaderItem(NavToggle)
 
-const MobileNav = ({ translationSetup = appConfig.activeNavTranslation }) => {
+const MobileNav = () => {
     const [isOpen, setIsOpen] = useState(false)
 
     const handleOpenDrawer = () => {

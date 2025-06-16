@@ -6,7 +6,6 @@ import { useThemeStore } from '@/store/themeStore'
 import { useSessionUser } from '@/store/authStore'
 import { useRouteKeyStore } from '@/store/routeKeyStore'
 import navigationConfig from '@/configs/navigation.config'
-import appConfig from '@/configs/app.config'
 import { Link } from 'react-router'
 import {
     SIDE_NAV_WIDTH,
@@ -27,7 +26,6 @@ const sideNavCollapseStyle = {
 }
 
 const SideNav = ({
-    translationSetup = appConfig.activeNavTranslation,
     background = true,
     className,
     contentClass,
@@ -54,7 +52,7 @@ const SideNav = ({
             )}
         >
             <Link
-                to={appConfig.authenticatedEntryPath}
+                to='/'
                 className="side-nav-header flex flex-col justify-center"
                 style={{ height: HEADER_HEIGHT }}
             >
@@ -77,7 +75,7 @@ const SideNav = ({
                         navigationTree={navigationConfig}
                         routeKey={currentRouteKey}
                         direction={direction}
-                        translationSetup={translationSetup}
+
                         userAuthority={userAuthority || []}
                     />
                 </ScrollBar>

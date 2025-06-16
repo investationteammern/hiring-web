@@ -12,18 +12,13 @@ import { useThemeStore } from '@/store/themeStore'
 import { useRouteKeyStore } from '@/store/routeKeyStore'
 import { useSessionUser } from '@/store/authStore'
 import navigationConfig from '@/configs/navigation.config'
-import appConfig from '@/configs/app.config'
 import isEmpty from 'lodash/isEmpty'
-import useTranslation from '@/utils/hooks/useTranslation'
 
 const stackedSideNavDefaultStyle = {
     width: SPLITTED_SIDE_NAV_MINI_WIDTH,
 }
 
-const StackedSideNav = ({
-    translationSetup = appConfig.activeNavTranslation,
-}) => {
-    const { t } = useTranslation(!translationSetup)
+const StackedSideNav = () => {
 
     const [selectedMenu, setSelectedMenu] = useState({})
     const [activeKeys, setActiveKeys] = useState([])
@@ -82,7 +77,7 @@ const StackedSideNav = ({
                         navigationTree={navigationConfig}
                         userAuthority={userAuthority || []}
                         selectedMenu={selectedMenu}
-                        t={t}
+
                         onChange={handleChange}
                         onSetActiveKey={handleSetActiveKey}
                     />
@@ -104,7 +99,6 @@ const StackedSideNav = ({
                                 menu={selectedMenu.menu}
                                 routeKey={currentRouteKey}
                                 direction={direction}
-                                translationSetup={translationSetup}
                                 userAuthority={userAuthority || []}
                                 onCollapse={handleCollpase}
                             />

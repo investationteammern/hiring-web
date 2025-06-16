@@ -1,19 +1,10 @@
 import cookiesStorage from '@/utils/cookiesStorage'
-import appConfig from '@/configs/app.config'
 import { TOKEN_NAME_IN_STORAGE } from '@/constants/api.constant'
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
 const getPersistStorage = () => {
-    if (appConfig.accessTokenPersistStrategy === 'localStorage') {
-        return localStorage
-    }
-
-    if (appConfig.accessTokenPersistStrategy === 'sessionStorage') {
-        return sessionStorage
-    }
-
-    return cookiesStorage
+    // 
 }
 
 const initialState = {

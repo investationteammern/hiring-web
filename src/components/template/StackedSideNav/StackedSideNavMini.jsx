@@ -8,7 +8,6 @@ import {
     HEADER_HEIGHT,
 } from '@/constants/theme.constant'
 import { NAV_ITEM_TYPE_ITEM } from '@/constants/navigation.constant'
-import appConfig from '@/configs/app.config'
 import navigationIcon from '@/configs/navigation-icon.config'
 import useMenuActive from '@/utils/hooks/useMenuActive'
 import isEmpty from 'lodash/isEmpty'
@@ -60,13 +59,13 @@ const StackedSideNavMini = (props) => {
         activeKeys && activeKeys.length > 0
             ? activeKeys
             : isEmpty(selectedMenu)
-              ? []
-              : [includedRouteTree.key]
+                ? []
+                : [includedRouteTree.key]
 
     return (
         <div {...rest}>
             <Link
-                to={appConfig.authenticatedEntryPath}
+                to='/'
                 className="stacked-mini-nav-header flex items-center justify-center"
                 style={{ height: HEADER_HEIGHT }}
             >
