@@ -207,7 +207,7 @@ const BillingSection = ({ data }) => {
                         className={classNames(
                             'flex flex-col lg:flex-row lg:items-center justify-between gap-3 p-4',
                             !isLastChild(data.paymentMethod || [], index) &&
-                                'border-b border-gray-200 dark:border-gray-600',
+                            'border-b border-gray-200 dark:border-gray-600',
                         )}
                     >
                         <div className="flex items-center gap-3">
