@@ -11,14 +11,9 @@ const ProtectedRoute = () => {
     const getPathName =
         pathName === '/' ? '' : `?${REDIRECT_URL_KEY}=${pathName}`
 
-    // if (!authenticated) {
-    //     return (
-    //         <Navigate
-    //             replace
-    //             to={`${unAuthenticatedEntryPath}${getPathName}`}
-    //         />
-    //     )
-    // }
+
+
+
 
     return <Outlet />
 }
