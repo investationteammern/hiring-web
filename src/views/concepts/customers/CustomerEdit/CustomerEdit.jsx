@@ -4,6 +4,7 @@ import Button from '@/components/ui/Button'
 import Notification from '@/components/ui/Notification'
 import toast from '@/components/ui/toast'
 import ConfirmDialog from '@/components/shared/ConfirmDialog'
+import { apiGetCustomer } from '@/services/CustomersService'
 import CustomerForm from '../CustomerForm'
 import sleep from '@/utils/sleep'
 import NoUserFound from '@/assets/svg/NoUserFound'
@@ -16,7 +17,15 @@ const CustomerEdit = () => {
 
     const navigate = useNavigate()
 
-
+    const { data, isLoading } = useSWR(
+        [`/api/customers${id}`, { id: id }],
+        // eslint-disable-next-line no-unused-vars
+        ([_, params]) => apiGetCustomer(params),
+        {
+            revalidateOnFocus: false,
+            revalidateIfStale: false,
+        },
+    )
 
     const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false)
     const [isSubmiting, setIsSubmiting] = useState(false)

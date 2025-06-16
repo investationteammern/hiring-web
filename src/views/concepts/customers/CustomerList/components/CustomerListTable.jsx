@@ -173,15 +173,15 @@ const CustomerListTable = () => {
             selectable
             columns={columns}
             data={customerList}
-            noData={!isLoading && customerList.length === 0}
+            noData=''
             skeletonAvatarColumns={[0]}
             skeletonAvatarProps={{ width: 28, height: 28 }}
             loading={isLoading}
-            pagingData={{
-                total: customerListTotal,
-                pageIndex: tableData.pageIndex,
-                pageSize: tableData.pageSize,
-            }}
+            // pagingData={{
+            //     total: customerListTotal,
+            //     pageIndex: tableData.pageIndex,
+            //     pageSize: tableData.pageSize,
+            // }}
             checkboxChecked={(row) =>
                 selectedCustomer.some((selected) => selected.id === row.id)
             }
