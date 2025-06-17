@@ -193,5 +193,4 @@ const CustomerListTable = () => {
         />
     )
 }
-
 export default CustomerListTable

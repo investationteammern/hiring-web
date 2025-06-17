@@ -1,7 +1,10 @@
+import { Button } from '@/components/ui'
 import useCustomerList from '../hooks/useCustomerList'
 import CustomerListSearch from './CustomerListSearch'
 import CustomerTableFilter from './CustomerListTableFilter'
 import cloneDeep from 'lodash/cloneDeep'
+import { TbEyeFilled } from "react-icons/tb";
+
 
 const CustomersListTableTools = () => {
     const { tableData, setTableData } = useCustomerList()
@@ -22,6 +25,11 @@ const CustomersListTableTools = () => {
     return (
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
             <CustomerListSearch onInputChange={handleInputChange} />
+            <Button
+                variant='default'
+                icon={<TbEyeFilled className='text-xl' />}
+            >
+            </Button>
             <CustomerTableFilter />
         </div>
     )
