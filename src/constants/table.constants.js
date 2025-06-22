@@ -1,0 +1,1 @@
+export const coloumns = [{ key: '_id', header: '#' }, { key: 'name', header: 'Name' }, { key: 'action', header: 'Action' }]

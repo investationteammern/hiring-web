@@ -3,11 +3,14 @@ import useCustomerList from '../hooks/useCustomerList'
 import CustomerListSearch from './CustomerListSearch'
 import CustomerTableFilter from './CustomerListTableFilter'
 import cloneDeep from 'lodash/cloneDeep'
-import { TbEyeFilled } from "react-icons/tb";
+import { useShowStore } from '@/store/showStore'
+import Dropdown from '@/components/shared/dropdown/Dropdown'
+import { useEffect, useRef } from 'react'
 
 
 const CustomersListTableTools = () => {
     const { tableData, setTableData } = useCustomerList()
+
 
     const handleInputChange = (val) => {
         const newTableData = cloneDeep(tableData)
@@ -22,14 +25,12 @@ const CustomersListTableTools = () => {
         }
     }
 
+
+
     return (
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 relative" >
             <CustomerListSearch onInputChange={handleInputChange} />
-            <Button
-                variant='default'
-                icon={<TbEyeFilled className='text-xl' />}
-            >
-            </Button>
+
             <CustomerTableFilter />
         </div>
     )

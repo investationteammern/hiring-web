@@ -39,7 +39,6 @@ const Button = (props) => {
     const buttonSize = size || inputGroupSize || formControlSize || controlSize
     const feedback = !ui?.button?.disableClickFeedback || clickFeedback
     const unclickable = disabled || loading
-
     const getButtonSize = () => {
         let sizeClass = ''
         switch (buttonSize) {
@@ -193,7 +192,6 @@ const Button = (props) => {
 
         return <>{children}</>
     }
-
     return (
         <Component
             ref={ref}
