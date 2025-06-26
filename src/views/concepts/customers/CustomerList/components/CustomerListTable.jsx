@@ -15,7 +15,7 @@ import { coloumns } from '@/constants/table.constants'
 const CustomerListTable = () => {
     const { categories, loading, error, totalPages, limit, page, onPageChange, onLimitChange } = useCategoryList();
     const { showColoumns } = useShowStore();
-
+    console.log(categories);
     if (loading) {
         return <Loading />
     }

@@ -8,6 +8,7 @@ import { useShowStore } from '@/store/showStore'
 import { TbEyeFilled } from "react-icons/tb";
 import Dropdown from '@/components/shared/dropdown/Dropdown'
 import { coloumns } from '@/constants/table.constants'
+import { useExportStore } from '@/store/exportStore'
 
 const CustomerListActionTools = () => {
     const navigate = useNavigate()
@@ -18,10 +19,17 @@ const CustomerListActionTools = () => {
     const toggleButtonRef = useRef(null)
     const { customerList } = useCustomerList()
     const tableId = 'customerTable'
-
+    const exportTableData = useExportStore((state) => state.exportTableData)
+    const { categories, exportData } = useCustomerList();
+    const filename = 'categories'
+    console.log(exportData);
     // handle show 
     const handleShow = () => {
-        toggleColumns()
+        toggleColumns();
+    }
+    const exportTable = () => {
+        const cleanedData = exportData.map(({ __v, ...rest }) => rest)
+        exportTableData(cleanedData, filename)
     }
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -64,7 +72,7 @@ const CustomerListActionTools = () => {
                 size="sm"
                 variant="default"
                 icon={<TbTableExport className="text-xl" />}
-                onClick={() => navigate('/concepts/customers/customer-create')}
+                onClick={exportTable}
             >
                 Export
             </Button>

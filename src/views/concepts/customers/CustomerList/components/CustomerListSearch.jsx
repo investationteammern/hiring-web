@@ -1,15 +1,20 @@
-import DebouceInput from '@/components/shared/DebouceInput'
+import { Input } from '@/components/ui'
 import { TbSearch } from 'react-icons/tb'
+import useCategoryList from '../hooks/useCustomerList'
+import { useSearchStore } from '@/store/searchStore'
 
-const CustomerListSearch = (props) => {
-    const { onInputChange, ref } = props
+const CustomerListSearch = () => {
+
+    const searchTerm = useSearchStore(state => state.searchTerm);
+    const setSearchTerm = useSearchStore(state => state.setSearchTerm);
 
     return (
-        <DebouceInput
-            ref={ref}
+        <Input
+
             placeholder="Quick search..."
             suffix={<TbSearch className="text-lg" />}
-            onChange={(e) => onInputChange(e.target.value)}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
         />
     )
 }

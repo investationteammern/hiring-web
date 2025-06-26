@@ -19,6 +19,9 @@ import { HiPencil } from "react-icons/hi2";
 import { themeConfig } from '@/configs/theme.config'
 import { Button } from '../ui'
 import { useTableStore } from '@/store/table.Store'
+import { useConfig } from '../ui/ConfigProvider'
+import { useThemeStore } from '@/store/themeStore'
+import presetThemeSchemaConfig from '@/configs/preset-theme-schema.config'
 
 
 // import classNames from '@/utils/classNames'
@@ -61,16 +64,25 @@ const IndeterminateCheckbox = (props) => {
 
 function DataTable(props) {
     const { data, coloumns, totalPages, limit, currentPage, onPageChange, onLimitChange } = props;
+
     const tableId = 'customerTable'
     const visibleColumns = useTableStore(state => state.getVisibleColumns(tableId))
-    console.log(visibleColumns)
+    const { themeSchema, mode } = useThemeStore();
+    const theme = presetThemeSchemaConfig[themeSchema]?.[mode] || {};
+    const primaryColor = theme?.primary || '#2a85ff'
+    const headerBgColor = theme?.primarySubtle || '#f0f5ff'
+
+    console.log(primaryColor)
     return (
         <>
             <Table>
                 <THead>
-                    <tr>
+                    <tr style={{
+                        backgroundColor: headerBgColor,
+
+                    }}>
                         {coloumns.map(col =>
-                            visibleColumns[col.key] && <th key={col.key}>{col.header}</th>
+                            visibleColumns[col.key] && <th key={col.key} >{col.header}</th>
                         )}
                     </tr>
                 </THead>
